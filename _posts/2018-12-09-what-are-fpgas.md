@@ -3,6 +3,7 @@ layout: post
 title: What are FPGAs ?
 date: 2018-12-09 11:07
 description: An Introduction to the world of FPGAs and Digital Design
+tags: electronics
 toc: true
 ---
 
