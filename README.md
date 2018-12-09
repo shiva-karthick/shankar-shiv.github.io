@@ -1,74 +1,75 @@
-# shankar-shiv.github.io
+Jekyll Clean Dark
+============
 
-My personal blog
+[![Gem Version](https://badge.fury.io/rb/jekyll-clean-dark.svg)](https://badge.fury.io/rb/jekyll-clean-dark)
 
-# Carte Noire
+This theme was created on top of Jekyll Clean theme by Scotte, you can view the original version in action [on his blog](https://scotte.github.io).
 
-A simple Jekyll theme for blogging. Not named after the coffee.
+* Get it from [github](https://github.com/streetturtle/jekyll-clean-dark).
+* See the [live demo](http://pavelmakhov.com/jekyll-clean-dark).
+* See it [in action on my own blog](http://pavelmakhov.com).
+* Easily [customizable](http://pavelmakhov.com/jekyll-clean-dark/2016/09/customizations)
 
-![Homepage](http://i.imgur.com/xlmHArV.png)
+![preview1](./assets/images/preview1.jpg)
+![preview2](./assets/images/preview2.jpg)
+![preview3](./assets/images/preview3.jpg)
 
-### Article
+This theme uses some parts of Twitter Bootstrap, which allows it to look nice on a mobile devices using a collapsable nav bar and hiding the
+sidebar.
 
-![Article](http://i.imgur.com/8rD8FfC.png)
+Some cool features:
 
-### Disqus Comments
+ - [Disqus](http://disqus.com) as a comments system;
+ - [Google Analytics](http://www.google.com/analytics/);
+ - [Yandex Metrica](http://metrica.yandex.com);
+ - Blog tags - check the section below;
+ - [Share buttons](http://pavelmakhov.com/jekyll-clean-dark/2016/09/be-social);
+ - [Table Of Content](http://pavelmakhov.com/jekyll-clean-dark/2018/08/table-of-content);
+ - Bootstrap 4 and FontAwesome 5!
 
-![Comments](http://i.imgur.com/TBZHQwF.png)
+All these features could be set up in `_config.yml`. Also you can have social icons which could lead to your social profiles. It uses [font-awesome](http://fontawesome.io/), so you can have any icon you want to any social profile. Out-of-the box it has: LinkedIn, GitHub, StackOverflow, LastFm, Instagram. And you can easily add more by adding new style in `theme.css` and setting it in `_config.yml`.
 
-### Posts grouped by year
+Installation
+============
 
-![All Posts](http://i.imgur.com/9bNs2Sc.png)
+If you don't have your own blog you can clone this repository and put your articles in a `_posts` folder.
+If you already have your own blog then I think you can clone this repository and copy-paste content keeping your `_posts` folder.
 
-### JavaScript Search
+After you will have to set up your `_config.yml`
 
-![Search](http://i.imgur.com/yQqMeSl.png)
+Gem Installation
+================
 
-### Menu by mmenu
+Follow the instructions on the Jekyll [site](https://jekyllrb.com/docs/themes/). Then copy the following files from this repository:
 
-![Menu](http://i.imgur.com/SClrNSH.png)
+ -_config.yml
+ - about.md
+ - admin.md
+ - archive.html
+ - feed.xml 
+ 
+Blog tags
+=========
 
-## Contact
+To use this feature you simply will need to create a markdown file for each tag which you are using in you site in **tag** folder. To simplify this procedure there is an [/admin](http://pavelmakhov.com/jekyll-clean-dark/admin.html) page, which outputs the bash command which you just need to run inside **tag** folder of your site. Also don't forget to rerun it when you add a post with new tag.
 
-If you wish to contact me regarding this theme please raise an issue on GitHub,
-tweet me [@\_jacobtomlinson](http://www.twitter.com/_jacobtomlinson) or email me
-[jacob@jacobtomlinson.co.uk](mailto:jacob@jacobtomlinson.co.uk).
+License
+=======
 
-## Contribution
+The content of this theme is distributed and licensed under a
+[Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/legalcode)
 
-Pull requests are very welcome.
+    This license lets others distribute, remix, tweak, and build upon your work,
+    even commercially, as long as they credit you for the original creation. This
+    is the most accommodating of licenses offered. Recommended for maximum
+    dissemination and use of licensed materials.
 
-## Theme
+In other words: you can do anything you want with this theme on any site, just please
+provide a link to the original theme on github.
 
-This jekyll theme has been created from scratch. Ideas and inspiration are taken
-from other places but the code is my own.
+This theme includes the following files which are the properties of their
+respective owners:
 
-## Tools and Libraries
-
-The following tools and libraries are used in this theme
-
-### JavaScript
-
-- [jQuery](http://jquery.com/)
-- [MMenu](http://mmenu.frebsite.nl/)
-- [HighlightJS](https://highlightjs.org/)
-- [Simple Jekyll Search](https://github.com/christian-fei/Simple-Jekyll-Search)
-
-### CSS
-
-- [Bootstrap](http://getbootstrap.com/)
-- [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
-
-### Social
-
-- [AddThis](http://www.addthis.com/)
-- [Disqus](https://disqus.com/)
-
-### Other
-
-- [Real Favicon Generator](http://realfavicongenerator.net/)
-- [Google Analytics](http://www.google.com/analytics/)
-
-## License
-
-The jekyll theme, HTML, CSS and JavaScript is licensed under GPLv3 (unless stated otherwise in the file).
+* js/bootstrap.min.js - [bootstrap](http://getbootstrap.com)
+* css/bootstrap.min.css - [bootstrap](http://getbootstrap.com)
+* js/jquery.min.js - [jquery](https://jquery.com)
