@@ -1,61 +1,58 @@
-{% if site.tags != "" %}
-{% include collecttags.html %}
+{% if site.style == 'dark' %}
+  {% assign icon_color = "#ffffff" %}
+{% else %}
+  {% assign icon_color = "#24292e" %}
 {% endif %}
 
-<html lang="en">
+{% assign content = page.content %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>{{ site.name }}{% if page.title %} | {{ page.title }} {% endif %}</title>
-    <meta name="theme-color" content="#222222"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/popper.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/bootstrap4.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/header.js' | relative_url }}"></script>
-    <script src="{{ '/assets/css/svg-with-js/js/fontawesome-all.js' | relative_url }}"></script>
-    <link href="{{ '/assets/css/bootstrap4.min.css' | relative_url }}" rel="stylesheet">
-    <link href="{{ '/assets/css/theme.css' | relative_url }}" rel="stylesheet">
-    <link href="{{ '/assets/css/syntax.css' | relative_url }}" rel="stylesheet">
- </head>
+{% assign posts_total = site.posts | size %}
 
-<body>
+{% assign user = site.github.owner %}
 
-{% include google-analytics.html %}
-{% include yandex-metrica.html %}
+{% if page.path contains '_posts' %}
+  {% assign meta_description = page.content | strip_html | strip_newlines | xml_escape | truncate: 300 %}
+{% else %}
+  {% assign meta_description = user.bio | strip_html | strip_newlines | xml_escape | truncate: 300 %}
+{% endif %}
 
-<script type="text/javascript">
-    WebFontConfig = {
-        google: {
-            families: ['Ubuntu::latin']
-        }
-    };
-    (function () {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-    })();
-</script>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{{ meta_description }}" />
+    <title>GeekFile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{site.baseurl}}/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{site.baseurl}}/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{site.baseurl}}/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{site.baseurl}}/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link href="{{ "/assets/styles.css" | relative_url }}" rel="stylesheet" type="text/css">
+    {% if page.mathjax %}
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    {% endif %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144119335-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{{ '' | relative_url }}/">{{ site.name }}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{{ '' | relative_url }}/">/home</a>
-                <a class="nav-item nav-link" href="{{ 'archive.html' | relative_url }}">/archive</a>
-                <a class="nav-item nav-link" href="{{ 'tags.html' | relative_url }}">/tags</a>
-                <a class="nav-item nav-link" href="{{ 'about.html' | relative_url }}">/about</a>
-            </div>
-        </div>
-    </div>
-</nav>
+      gtag('config', 'UA-144119335-1');
+    </script>
+  </head>
+  <body class="bg-white height-full">
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h2 navtitle">GEEKFILE</span>
+      <div class="rightnav">
+        <a href="/about/">
+          <img src="/assets/img/about.png" width="25" height="25">
+        </a>
+      </div>
+    </nav>

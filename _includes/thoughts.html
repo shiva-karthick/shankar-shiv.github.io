@@ -1,0 +1,19 @@
+<h2 class="section-head">Computing</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Articles related to computing.</p>
+<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+  {% for post in site.categories.computing limit: 100 %}
+    <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
+      {% include post-card.html %}
+    </div>
+  {% endfor %}
+</div>
+<!-- SPACE -->
+<h2 class="section-head">Space</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Articles related to space exploration.</p>
+<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+  {% for post in site.categories.space limit: 100 %}
+    <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
+      {% include post-card.html %}
+    </div>
+  {% endfor %}
+</div>
