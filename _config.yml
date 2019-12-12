@@ -9,11 +9,11 @@ plugins:
 permalink: /:year/:month/:day/:title/
 
 defaults:
-    scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts"
-    values:
-      layout: "post"
+  scope:
+    path: "" # an empty string here means all files in the project
+    type: "posts"
+  values:
+    layout: "post"
 
 projects:
   sort_by: pushed
@@ -41,10 +41,10 @@ social_media:
   # behance: your_username
   # dribbble: your_username
   # facebook: your_username
-  linkedin: nikhilraghavendra
-  medium: "@nikraghava"
+  linkedin: shivashankar
+  medium: "@shivashankaar"
   # stackoverflow: your_user_id
   # telegram: your_username
-  twitter: maranacoder
+  # twitter: maranacoder
   # youtube: your_username
   # vk: your_username

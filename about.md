@@ -4,9 +4,14 @@ title: About Me
 permalink: /about/
 ---
 
-Hi! I'm Nikhil Raghavendra, an engineering student with extensive full stack development experience working with electronics, machine learning, and cloud computing. I have a strong passion for creating useful products that make people's lives better with a focus on aesthetics and creative design. I'm a serial-hackathon attendee, and I've won several prizes from Bosch, Amazon Web Services and Airbus Defence and Space.
+Hello! I'm Shiva Shankar, an electrical engineering student who is passionate in working with embedded computing, artificial intelligence. I am interested in inventing solutions that tackle the UN Sustainable development goals. I have won in many hackathons such as Bosch and Amazon Web Services and plan to do more ...
 
-I've also been conferred with the Tan Kah Kee Young Inventors' Award for my invention titled: "Disaster Recovery with HOPE handset and COMPASS dashboard" along with fellow inventors James and Bryan (who also happen to be part of my hackathon team).
+My team was the champion of the Bosch Ville Hackathon 2018. We implemented an IoT based product which allows farmers and researchers to experiment on different nutrient concentrations in order to promote plant growth and increase yield. This would help tackle the issue of world hunger which is a Sustainable Development Goal. Our idea was so impressive that we were given a chance to engage in a partnership with Bosch to bring the product to market. I am truly grateful to my 4 team members and will work together with my team to bring it to production.
 
-I'm an autodidact who likes to learn about computing, electronics, space, and design during my free time. I use this personal website to collect and organize my thoughts and learning experiences into blog posts and tutorials. If you like my posts, kindly share it with people interested in these topics. Hope you find the content in my blog useful 😉.
+There are two things I know to be true of every autodidact I have ever met:
+
+1) Autodidacts eventually learn what the word autodidact means
+2) Autodidacts who don't give up eventually become one of the best at whatever it is they are doing
+
+I always try to do self learning to explore new stuff such as the machine learning, blockchain hype or the next js framework ! This is my personal blog where I compile my thoughts and reflections. Please do share with your friends if you had found it useful ! :)
 
