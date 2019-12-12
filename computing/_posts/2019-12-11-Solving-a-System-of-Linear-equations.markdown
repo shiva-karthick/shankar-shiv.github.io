@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Solving a System of Linear equations"
-date:   2019-12-20 14:50:55 +0800
+date:   2019-12-11 14:50:55 +0800
 categories: Machine Learning
 ---
 
-Gauss Jordan and gauss elimination
+## Gauss Jordan and gauss elimination

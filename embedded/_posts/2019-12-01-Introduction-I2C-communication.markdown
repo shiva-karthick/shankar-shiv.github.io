@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introduction to I2C communication"
-date:   2019-12-21 16:12:55 +0800
+date:   2019-12-01 16:12:55 +0800
 categories: Microcontroller programming
 mathjax: true
 ---
