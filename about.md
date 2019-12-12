@@ -11,6 +11,7 @@ My team was the champion of the Bosch Ville Hackathon 2018. We implemented an Io
 There are two things I know to be true of every autodidact I have ever met:
 
 1) Autodidacts eventually learn what the word autodidact means
+
 2) Autodidacts who don't give up eventually become one of the best at whatever it is they are doing
 
 I always try to do self learning to explore new stuff such as the machine learning, blockchain hype or the next js framework ! This is my personal blog where I compile my thoughts and reflections. Please do share with your friends if you had found it useful ! :)

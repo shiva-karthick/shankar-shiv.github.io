@@ -27,15 +27,9 @@ projects:
     # - repo-name
 
 repositories:
-  - OpenVINO-18.04-Support
-  - Granite
-  - SP-Siri-Shortcuts
-  - OpenAI-CartPole-v0
-  - xBoot
-  - ML-Antivirus
-  - Color-Trek
-  - dirm
-  - amber-and-snake
+  - SPI_Serial_SRAM_23LC1024
+  - PLC_Energy_Saver
+  - Pygame_Projects
 
 social_media:
   # behance: your_username
