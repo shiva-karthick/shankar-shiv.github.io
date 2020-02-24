@@ -9,11 +9,22 @@
   {% endfor %}
 </div>
 <!-- Embedded blogs -->
-<h2 class="section-head">Embedded Computing</h2>
-<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">My personal learning journey of
-  embedded computing</p>
+<h2 class="section-head">Electronics</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">A place where magic smoke
+  appears</p>
 <div class="d-sm-flex flex-wrap gutter-condensed mb-4">
-  {% for post in site.categories.embedded limit: 100 %}
+  {% for post in site.categories.electronics limit: 100 %}
+  <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
+    {% include post-card.html %}
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Software Defined Radio -->
+<h2 class="section-head">Software Defined Radio</h2>
+<p class="f4 mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Hacking radio in software</p>
+<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+  {% for post in site.categories.SDR limit: 100 %}
   <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
     {% include post-card.html %}
   </div>
