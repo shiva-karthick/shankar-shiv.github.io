@@ -26,7 +26,8 @@ Radio components such as modulators, demodulators and tuners are traditionally i
 
 # So What is RTL-SDR dongle ?
 
-![RTL-SDR.jpg](RTL-SDR.jpg)
+![RTL-SDR.jpg](/assets/img/RTL-SDR.jpg)
+
 
 Contents :
 * RTL-SDR
