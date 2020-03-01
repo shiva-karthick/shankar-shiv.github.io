@@ -31,12 +31,18 @@ Radio components such as modulators, demodulators and tuners are traditionally i
 
 Contents :
 * RTL-SDR
+* 1x dipole antenna base with 60cm RG174 cable and SMA Male connector.
+* 1x 3 meter RG174 coax cable extension
+* 2x 23cm to 1 m telescopic antennas. 
+* 2x 5cm to 13cm telescopic antennas.
+* 1x flexible tripod mount with 1/4" male screw.
+* 1x suction cup mount with 1/4" male screw.
 
 I got an RTL-SDR dongle at [Aliexpress](https://www.aliexpress.com/store/4523039?spm=2114.search0104.3.13.5f7b2d20Zqs83H) at around SGD 40.00 which is much cheaper than on Amazon (SGD 50.00). RTL-SDR is a very cheap ~$25 USB dongle that can be used as a computer based radio scanner for receiving live radio signals in your area. The original purpose of an RTL-SDR dongle wereto recieve television signals but some genious chaps found that the raw I/Q data on the RTL2832U chipset could be accessed directly, which allowed the DVB-T TV tuner to be converted into a wideband software defined radio via a custom software driver developed by Steve Markgraf. These dongles are extremely popular dut to their low cost and open source software and drivers. 
 
 ## Technical specifications
 
-![technical features](technical_features.png)
+![technical features](/assets/img/technical_features.jpg)
 
 - 500 KHz to 1.75 GHz frequency range
 - 8 bits ADC resolution
@@ -60,7 +66,7 @@ The RTL2832U is a digital TV demodulator that supports a USB 2.0 interface and r
 
 ### How they Work together
 
-![RTLSDR design](RTLSDR design.png)
+![RTLSDR design](/assets/img/RTLSDRdesign.png)
 
 # How to get started with Hardware ?
 
@@ -69,6 +75,8 @@ The RTL2832U is a digital TV demodulator that supports a USB 2.0 interface and r
 The Dipole Antenna Kit allows for a simple v-dipole configuration for satellite reception.
 
 ## Dipole Orientation
+
+<img src="/assets/img/V_shaped_dipole.jpg" alt="V_shaped_dipole" height="550" width="600"/>
 
 A dipole can be used in either vertical or horizontal polarization, just by orienting it either vertically or horizontally. Signals are normally transmitted with either horizontal, vertical or right hand/left hand circular polarization (RHCP/LHCP). This is essentially the 'orientation' of a signal, and an antenna with the same polarization should be used too for best performance.
 
@@ -80,16 +88,19 @@ If you mismatch vertical and horizontal polarization or RHCP and LHCP you'll get
 
 I recommend this [dipole calculator](http://www.csgnetwork.com/antennaedcalc.html). The exact length does not matter too much, but try to get the lengths as close to what the calculator says as you can. With the dipole you want both elements to be the same length.
 
-c = speed of light = \\3 * 10^{8} metres/second\\
+When a signal is sent down a transmission channel, it travles at a certain velocity $$ V_{prop} $$ determined by the tranmission medium. Wavelength $$ \lambda $$ is defined by the distance travelled by the signal in $$ T $$ seconds where $$ T = \frac{1}{f} $$ and is the period of the signal of frequency f. 
 
-$$ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $$
+distance = velocity * time
 
-$$ x_1 $$ is $$ x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} $$
+$$ \lambda $$ = $$ V_{prop} * T $$
+
+$$ \lambda $$ = $$ V_{prop} * \frac{1}{f} $$
+
+c = speed of light = $$ 3 * 10^{8} $$ metres/second 
 
 f = Signal frequency i.e = 96.8 Mhz
 
-
-The minimum antenna length $l_{min}$ for good reception is $l_{min} = 0.1\lambda , where \lambda is c / f$ .
+The minimum antenna length $$ l_{min} $$ for good reception is $$ l_{min} = 0.1 * \lambda $$, where $$ \lambda $$ is $$ \frac{c}{f} $$.
 
 
 For more indepth information, read [here](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/)
@@ -114,7 +125,7 @@ Another alternative is GNU Radio, if you use Windows like me download it [here](
 
 Once the SDR# setup is done, open SDRSharp.exe.
 
-![SDR# Welcome Screen](sdrsharp_welcome_screen.png)
+![SDR# Welcome Screen](/assets/img/sdrsharp_welcome_screen.png)
 
 After opening SDR# for the first time, we suggest that you immediately remember to perform the following steps : 
 
@@ -254,14 +265,16 @@ The [Signal Identification Guide](https://www.sigidwiki.com/wiki/Signal_Identifi
 
 Here are some quick samples,
 
-![FM Radio 96.8](FMRadio)
+![FM Radio 96.8](/assets/img/FM_Radio.png)
+
+I am listening to 96.8 Mhz FM radio. 
 
 If you have 433MHz RF Tx-Rx Modules lying around, you can use the Transmitter module to output a signal, and you can capture it in you SDR ! I used RadioHead library to accomplish this. 
 
-![Tx and Rx](https://433MHzRFTx-RxModules)
+![Tx and Rx](/assets/img/Transmitter_and_Receiver_433_MHz.jpg)
 
 
-![Tx wiring diagram](https://link)
+![Tx wiring diagram](/assets/img/433MHz-RF-Wireless-Transmitter-Module.png)
 
 
 ### Arduino code for 4333 MHz Transmitter
@@ -291,10 +304,10 @@ void loop()
 ```
 We can see the results both in SDR# and in GNURadio too !
 
-![433 Mhz SDR#](https://link)
+![433 Mhz SDR#](/assets/img/433_Mhz_SDR_SHARP.png)
 
-![433 Mhz GNURadio GRC](https://link)
+![433 Mhz GNURadio GRC](/assets/img/433Mhz_GNURadio_GRC.png)
 
 
 
-![433 Mhz GNURadio output](https://link)
+![433 Mhz GNURadio output](/assets/img/GRC_output.png )
