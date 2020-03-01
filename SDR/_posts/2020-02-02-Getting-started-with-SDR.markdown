@@ -79,10 +79,16 @@ If you mismatch vertical and horizontal polarization or RHCP and LHCP you'll get
 
 I recommend this [dipole calculator](http://www.csgnetwork.com/antennaedcalc.html). The exact length does not matter too much, but try to get the lengths as close to what the calculator says as you can. With the dipole you want both elements to be the same length.
 
-c = speed of light
-f = Signal frequency
+c = speed of light = \\3 * 10^{8} metres/second\\
 
-The minimum antenna length l_{min} for good reception is l_{min} = 0.1\lambda , where \lambda is c / f .
+$$ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $$
+
+$$ x_1 $$ is $$ x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} $$
+
+f = Signal frequency i.e = 96.8 Mhz
+
+
+The minimum antenna length $l_{min}$ for good reception is $l_{min} = 0.1\lambda , where \lambda is c / f$ .
 
 
 For more indepth information, read [here](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/)
