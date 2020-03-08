@@ -18,11 +18,13 @@ But what is a software defined radio ? Let me start with what is not a SDR,
 
 Radio components such as modulators, demodulators and tuners are traditionally implemented in analogue hardware components. The advent of modern computing and analogue to digital converters allows most of these traditionally hardware based components to be implemented in software instead. Hence, the term software defined radio. This enables easy signal processing and thus cheap wide band scanner radios to be produced. Do keep in mind the basic layout of a RF front end which are mixer, local oscillator, IF amplifiers and filters, demodulators and amplifiers. 
 
-![Basic layout of SDR](Software defined radio concept.png)
+![Basic layout of SDR](/assets/img/Software_defined_radio_concept.png)
 
 [Source](https://commons.wikimedia.org/w/index.php?curid=8831874)
 
-![AM demodulation in hardware](Envelope Detector.png)
+![AM demodulation in hardware](/assets/img/Envelope_Detector.png)
+
+ <p align="center"> <b> AM demodulation in hardware </b> </p> 
 
 # So What is RTL-SDR dongle ?
 
@@ -102,6 +104,20 @@ f = Signal frequency i.e = 96.8 Mhz
 
 The minimum antenna length $$ l_{min} $$ for good reception is $$ l_{min} = 0.1 * \lambda $$, where $$ \lambda $$ is $$ \frac{c}{f} $$.
 
+For example, if a signal of frequency of 100 Mhz were to be propagated, the minimum antenna length is $$ 0.1 * \frac{3 * 10^{8}}{100 * 10^{6}}  = 0.3 metres $$ . The 0.3 metres is a practical length than compared to a signal of frequency of 100 Hz where we would require an antenna length of 300 Kilometres. 
+
+The longer the antenna, the lower it's resonant frequency. The vice versa is the shorter the antenna, the higher it's resonant frequency . The closer you are to the resonant frequency, the signal reception is better. Remember that there is about 2cm of metal inside the antenna itself which needs to be added on. Below is a cheat sheet for various lengths and frequencies. Note that the length refers to the length of one side of the dipole only (e.g. the length that you need to extend each element out to).
+
+* Large Antenna, 5 Sections, 100cm + 2cm is resonant @ ~70 MHz
+* Large Antenna, 4 Sections, 80cm + 2cm is resonant @ ~87MHz
+* Large Antenna, 3 Sections, 60cm + 2cm is resonant @ ~115 MHz
+* Large Antenna, 2 Sections, 42cm + 2cm is resonant @ ~162 MHz
+* Large Antenna, 1 Section, 23cm + 2cm is resonant @ ~ 285 MHz
+* Small Antenna, 4 Sections, 14cm + 2cm is resonant @ ~445 MHz
+* Small Antenna, 3 Sections, 11cm + 2cm is resonant @ ~550 MHz
+* Small Antenna, 2 Sections, 8cm + 2cm is resonant @ ~720MHz
+* Small Antenna, 1 Section, 5cm + 2cm is resonant @ ~1030 MHz.
+
 
 For more indepth information, read [here](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/)
 
@@ -148,10 +164,6 @@ Most of the settings found in the main windows of SDR# affect the software digit
 ### Source
 
 Choose your specific input device here, I chose RTL-SDR(USB) option.
-
-### Play Button / Stop Button
-
-Click this button to start/stop the SDR
 
 ### Configure Menu aka Hardware settings menu
 
@@ -253,7 +265,7 @@ A few pointers,
 * No event signalling between blocks (Used by other block to change behaviour)
 * Free and Open Source, its GNU afterall!
 
-# Finding interesting Signals in Singapore !
+# Finding interesting Signals in Singapore
 
 Singapore is a small red dot in the asia pacific region,  I've always assumed that there's not much amateur radio action here, nor are the airways particularly friendly for trying to pull down low-power signals from a-far. 
 
