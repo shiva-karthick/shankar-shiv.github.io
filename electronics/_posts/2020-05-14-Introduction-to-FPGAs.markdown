@@ -1,24 +1,28 @@
 ---
 layout: post
-title:  "Introduction to FPGAs"
+title:  "Introduction to FPGAs using TinyFPGA BX"
 date:   2020-05-14 16:30:55 +0800
 categories: FPGA
 mathjax: true
 ---
-# Introduction to FPGAs using TinyFPGA BX
 
-- [Introduction to FPGAs using TinyFPGA BX](#introduction-to-fpgas-using-tinyfpga-bx)
-    - [FPGA Applications](#fpga-applications)
-  - [FPGAs vs Microcontrollers, what's the difference ?](#fpgas-vs-microcontrollers-whats-the-difference)
-  - [Why use FPGAs ?](#why-use-fpgas)
-  - [TinyFPGA BX board (Hey it's tiny !)](#tinyfpga-bx-board-hey-its-tiny)
-  - [How do we "program" or configure FPGAs](#how-do-we-%22program%22-or-configure-fpgas)
-  - [Software installation](#software-installation)
-  - [Credits](#credits)
-  - [FAQ](#faq)
+Table of Contents :
+- [Understanding FPGAs](#understanding-fpgas)
+  - [FPGA Applications](#fpga-applications)
+- [FPGAs vs Microcontrollers, what's the difference ?](#fpgas-vs-microcontrollers-whats-the-difference)
+- [Why use FPGAs ?](#why-use-fpgas)
+- [TinyFPGA BX board (Hey it's tiny !)](#tinyfpga-bx-board-hey-its-tiny)
+- [How do we "program" or configure FPGAs](#how-do-we-%22program%22-or-configure-fpgas)
+- [Software installation](#software-installation)
+- [Blink Example](#blink-example)
+- [VGA Example](#vga-example)
+    - [Circuit diagram :](#circuit-diagram)
+- [Credits](#credits)
+- [FAQ](#faq)
 
 > Have you ever wondered that you can create your own microprocessor ? Have you dreamed of creating digital circuits in software ? All this is possible thanks to the FPGAs. With them you can fully immerse yourself in the design of digital electronics.
 
+## Understanding FPGAs
 
 From the creator (Xilinx) of the FPGA,
 > Field Programmable Gate Arrays (FPGAs) are semiconductor devices that are based around a matrix of configurable logic blocks (CLBs) connected via programmable interconnects.
@@ -29,11 +33,11 @@ Digital circuits are made up of 3 elements: **logic gates to manipulate bits**, 
 
 The Configurable Logic Blocks (CLBs) aka slices or logic cells are the basic logic unit of an FPGA. CLBs are made up of 2 basic components: flip-flops and lookup tables (LUTs). The CLBs allow the FPGA to perform arithmetic and memory storage operations.
 
-<img src="assets/img/../../../../assets/img/2020-05-14-Introduction-to-FPGAs/different_parts_fpga.jpg" alt="fpga_config" width="400" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/different_parts_fpga.jpg" alt="different_parts_fpga" width="550" height="450"/>
 
 Flip Flops are binary shift registers used to synchronize logic and save logical states between clock cycles within an FPGA circuit. The flip flop will latch a 1/0 bit on its input and holds that value constant until the next clock edge.
 
-<img src="assets/img/../../../../assets/img/2020-05-14-Introduction-to-FPGAs/flip_flop.png" alt="fpga_config" width="300" height="200"/>
+<img src="/assets/img/Introduction-to-FPGAs/flip_flop.png" alt="flip_flop" width="300" height="200"/>
 
 It is a misconception to say that a FPGA is just a vast collection of individual Boolean logic gates. FPGAs are capable of implementing complex functions more efficiently with fixed modules (ROM,RAM module). It would be very time consuming implementing a ROM with only basic logic gates. However, all combinatorial logic (ANDs, ORs, NANDs, XORs, and so on) is implemented as truth tables within LUT memory. A truth table is a predefined list of outputs for every combination of inputs.
 
@@ -48,7 +52,7 @@ LUTs comprise of 1-bit memory cells (programmable to hold either ‘0’ or ‘1
 The output values of the truth table are stored in the SRAM cells of the LUT.
 Depending on the values sent to the LUT inputs of the multiplexers, 1 of the SRAM bits will be sent to the output.
 
-<img src="assets/img/../../../../assets/img/2020-05-14-Introduction-to-FPGAs/lut.png" alt="fpga_config" width="450" height="350"/>
+<img src="/assets/img/Introduction-to-FPGAs/lut.png" alt="lut" width="400" height="300"/>
 
 FPGAs are compared based on the number of configurable logic blocks (CLBs), number of fixed function logic blocks such as multipliers, and size of memory resources like embedded block RAM aka BRAM. 
 
@@ -60,25 +64,29 @@ FPGA has many use cases in many industries such as Data center, Communications a
 
 It all comes down to *hardware vs software*.
 
-A microprocessor executes its tasks in a sequential fashion, each instruction being processed before the next one is started. This instruction cycle is composed of three main stages: the fetch stage, the decode stage, and the execute stage. This inherently limits how a designer can implement her solutions. It is impossible to execute instructions in parallel like a FPGA. A microprocessor has overhead delays when executing on top of an OS, drivers, and application software.
+A microprocessor executes its tasks in a sequential fashion, each instruction being processed before the next one is started. This instruction cycle is composed of three main stages: the fetch stage, the decode stage, and the execute stage. This inherently limits how a designer can implement her solutions. It is impossible to execute instructions in parallel like a FPGA. Moreover a microprocessor has overhead delays when executing on top of an OS, drivers, and application software.
 
 FPGAs are truly parallel ,so different processing operations do not have to compete for the same CPU and memory resources. The task executing does not depend on other logic blocks and can function by itself. This results in the FPGA not compromising its performance.
 
-<img src="assets/img/../../../../assets/img/2020-05-14-Introduction-to-FPGAs/Decision_Making_in_FPGA_Hardware.jpg" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/Decision_Making_in_FPGA_Hardware.jpg" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
 
 ## Why use FPGAs ?
 
-FPGA chip adoption is driven by their flexibility, hardware-timed speed and parallelism.
+FPGA chip adoption is driven by their **flexibility**, **hardware-timed speed** and **parallelism**.
 
 1) FPGAs provide precise timing signals controlled from separate clocks.
-2) Mathematical algorithms can be implemented directly as a hardware circuit giving a performance boost over general processors. For example, **K-Means algorithm** is implemented [here](https://digitalsystemdesign.in/fpga-implementation-of-k-means-algorithm/)
+
+
+2) Mathematical algorithms can be implemented directly as a hardware circuit giving a performance boost over general processors. For example, **K-Means algorithm** is implemented in Verilog. Take a look at [https://digitalsystemdesign.in/fpga-implementation-of-k-means-algorithm/](https://digitalsystemdesign.in/fpga-implementation-of-k-means-algorithm/)
+
+
 3) A IP designer needs to test her design and run simulation before fabricating in silicon.
 
 ## TinyFPGA BX board (Hey it's tiny !)
 
 The TinyFPGA BX boards use Lattice Semiconductor’s ICE40LP8K FPGA. This FPGA is supported by a fully open source toolchain consisting of [Yosys](http://www.clifford.at/yosys), [ice-storm ](http://www.clifford.at/icestorm), and [NextPNR](https://github.com/YosysHQ/nextpnr).
 
-<img src="assets/../../../assets/img/2020-05-14-Introduction-to-FPGAs/tinyfpga-front-back.jpg" alt="bitstream" width="500" height="350"/>
+<img src="/assets/img/Introduction-to-FPGAs/tinyfpga-front-back.jpg" alt="tinyfpga-front-back" width="500" height="350"/>
 
 The TinyFPGA BX consists of :
 + ICE40LP8K FPGA
@@ -94,21 +102,21 @@ The TinyFPGA BX consists of :
 + Height: 1.4 inches, width: 0.7 inches,
 + Programming interface: USB 2.0 full-speed (12 mbit/sec)
 
-An interesting thing about TinyFPGA BX is that it does not include an FTDI FT2232H chip connected to the USB port. The FPGA contains all the hardware necessary to both program the FPGA, and to connect a basic serial port from your FPGA design to your host computer. ZipCPU explains in greater detail how  TinyFPGA requires FPGA design logic to communicate over the USB port at [here](https://zipcpu.com/blog/2018/10/05/tinyfpga.html). The ZipCPU has many more articles on [Verilog](http://zipcpu.com/tutorial/) and [FPGA Hell](https://zipcpu.com/fpga-hell.html), I suggest you take a look at those, they are gold in value. 
+An interesting thing about TinyFPGA BX is that it does not include an FTDI FT2232H chip connected to the USB port. The FPGA contains all the hardware necessary to both program the FPGA, and to connect a basic serial port from your FPGA design to your host computer. [ZipCPU](http://zipcpu.com/) explains in greater detail how the TinyFPGA requires FPGA design logic to communicate over the USB port at [here](https://zipcpu.com/blog/2018/10/05/tinyfpga.html). The ZipCPU has many more articles on [Verilog](http://zipcpu.com/tutorial/) and [FPGA Hell](https://zipcpu.com/fpga-hell.html), I suggest you take a look at those, they are gold in value.
 
 ## How do we "program" or configure FPGAs
 
 Hardware Description languages like VHDL, Verilog, System Verilog are the most widespread languages used in FPGAs. Don't be fooled by the similarity of high level programming languages and HDLs. They are fundamentally different and require the hardware designer to think in "hardware".
 
 Before we move on to HDLs, let's understand bitstream.
-The bitstream consists all the values ​​for the FPGA connections which are grouped into a bit strip
+The bitstream consists all the values ​​for the FPGA connections which are grouped into a bit strip.
 The bitstream is transmitted over a SPI - Serial Peripheral Interface bus. FPGAs are volatile meaning they do not retain the bitstream when there is no electrical supply. As a result, there is a external , non-volatile memory ,called configuration memory that stores the bitstream. The FPGA reconfigures itself  with the bitstream from the configuration memory when it boots up for the first time. 
 
-<img src="assets/../../../assets/img/2020-05-14-Introduction-to-FPGAs/bitstream.png" alt="bitstream" width="550" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/bitstream.png" alt="bitstream" width="550" height="300"/>
 
 The HDL is used to describe a digital circuit in software, then moving on to simulating the circuit and finally generating the bitstream. This process is called synthesis. 
 
-There are many ways to configure a FPGA. They are Verilog / VHDL (standard tools), Migen (Python programming), [IceStudio](https://github.com/FPGAwars/icestudio) graphical schematic entry tool and [Chisel- Scala programming](https://www.chisel-lang.org/).
+There are many ways to configure a FPGA. They are Verilog / VHDL (standard tools), [Migen](https://github.com/m-labs/migen) (Python programming), [IceStudio](https://github.com/FPGAwars/icestudio) graphical schematic entry tool and [Chisel- Scala programming](https://www.chisel-lang.org/).
 
 Example of a Verilog code
 
@@ -152,11 +160,11 @@ plat.build(m)
 
 [IceStudio](https://icestudio.io/) is a visual editor for open FPGA boards built with Electron framework. It is built on top of the Icestorm project using Apio.
 
-<img src="assets/../../../assets/img/2020-05-14-Introduction-to-FPGAs/icestudio.png" alt="icestudio" width="500" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/icestudio.png" alt="icestudio" width="500" height="300"/>
 
 From the [chisel-lang.org](https://www.chisel-lang.org/)
 > Chisel is a hardware design language that facilitates **advanced circuit generation** and **design reuse for both ASIC and FPGA digital logic designs** using Scala programming language.
-<img src="assets/../../../assets/img/2020-05-14-Introduction-to-FPGAs/fir_filter.svg" alt="fir_filter" width="500" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/fir_filter.svg" alt="fir_filter" width="500" height="300"/>
 
 ```scala
 // 3-point moving average implemented in the style of a FIR filter
@@ -177,16 +185,21 @@ class MovingAverage3(bitWidth: Int) extends Module {
 
 This installation uses [apio](https://github.com/FPGAwars/apio/blob/master/FAQ.md), an open source ecosystem for open FPGA boards with Atom IDE. This creates a great beginner environment to start hacking FPGAs immediately.
 
-Setup instructions for all major Operating systems:
-1) Install Python 3 and **check the “Add Python 3.xx to PATH”** checkbox. 
-2) Install APIO and tinyprog by opening a terminal and run the following commands:
-   ```shell 
+Setup instructions for all major Operating systems (Windows, MacOS and Linux based OS):
+
+1) Install [Python 3](https://www.python.org/downloads/) by following the setup instructions and **check the “Add Python 3.xx to PATH”** checkbox.
+   
+2) Install `APIO` and `tinyprog` by opening a terminal and run the following commands:
+   
+  ```shell 
     pip install apio==0.4.0b5 tinyprog
     apio install system scons icestorm iverilog
     apio drivers --serial-enable 
-    ```
-  These commands install APIO, tinyprog, as well as all of the necessary tools to actually program the FPGA.
+  ```
+
+  These commands install `APIO`, `tinyprog`, as well as all of the necessary tools to actually program the FPGA.
   On Unix systems, you may need to add yourself to the dialout group in order for your user to be able to access serial ports. You can do that by running:
+
   ```shell
     sudo usermod -a -G dialout $USER
   ```
@@ -198,29 +211,39 @@ Setup instructions for all major Operating systems:
 
 3) Download and install [Atom](https://atom.io/). The authors of APIO have created the APIO-IDE plugin that enables APIO to be used from within Atom.
    + Install the following package `apio-ide`. Click yes for any dependencies. Ignore any warnings about the APIO version.
-  
+
+<img src="/assets/img/Introduction-to-FPGAs/atom_editor.png" alt="atom_editor" width="1000" height="800"/>
+
 Congratulations , you are on your way to becoming a whizz in digital design!
 
-### Blink Example
+## Blink Example
 
 Ok enough talk, show me something !
 
-Let's get started with a blinky example
+Let's get started with a blinky example :
 
 1) Copy the [apio template](https://github.com/tinyfpga/TinyFPGA-BX/tree/master/apio_template) project from the [TinyFPGA BX Repository](https://github.com/tinyfpga/TinyFPGA-BX/archive/master.zip) and rename it anything.
+
+
 2) Open your newly copied template project using atom text editor.
-3) From the *“Apio”* menu, select *“Upload”*. The project will automatically be built and uploaded to the TinyFPGA BX board.
+
+
+3) From the *"Apio"* menu, select *“Upload”*. The project will automatically be built and uploaded to the TinyFPGA BX board.
+
+
 4) If everything is working as it should, you should see the user LED on the board blinking a “SOS” in morse code.
 
-### VGA Example
+<img src="/assets/img/Introduction-to-FPGAs/blink_example.jpg" alt="blink_example" width="350" height="200"/>
+
+## VGA Example
 
 This is a more advanced example but it will be an exciting one ! 
 
 Components required:
-+ 1 TinyFPGA BX board or another FPGA compatible
-+ 3 270 ohm (1/4 W) resistors
-+ 1 VGA female connector for printed circuit board (optional)
-+ 1 VGA display
++ TinyFPGA BX board or another FPGA compatible board X 1
++ 270 ohm (1/4 W) resistors X 3
++ VGA female connector for printed circuit board (optional) X 1
++ VGA display X 1
 
 This is the arrangement on the VGA connector. We are only interested in 6 pins.
 + R , G , B : (Red, Green, Blue) They are the 3 pins through which an analog signal of 75ohm and 0.7v enters, representing the 3 colors: red, green and blue.
@@ -228,15 +251,15 @@ This is the arrangement on the VGA connector. We are only interested in 6 pins.
 + VS : Vertical Sync Digital Signal
 + GND
 
-<img src="assets/../../../assets/img/2020-05-14-Introduction-to-FPGAs/vga_connector.png" alt="vga_connector" width="500" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/vga_connector.png" alt="vga_connector" width="500" height="300"/>
 
 #### Circuit diagram :
 
-<img src="assets/../../../assets/img/2020-05-14-Introduction-to-FPGAs/VGAconnector.gif" alt="VGA connection diagram" width="500" height="300"/>
+<img src="/assets/img/Introduction-to-FPGAs/VGAconnector.gif" alt="VGA connection diagram" width="500" height="300"/>
 
 Note : You only have to connect one of the ground pins ( GND ), because they are connected internally. I have chosen pin 5 of the VGA connector.
 
-Upload the code to the Tiny FPGA BX and play a game of pong. Have fun
+Upload the code to the Tiny FPGA BX and play a game of pong. Have fun !
 
 ```verilog
 // top.v
@@ -402,10 +425,37 @@ assign vga_v_sync = ~vga_VS;
 endmodule
 ```
 
-The original files are hosted [here](https://github.com/lawrie/tinyfpga_examples/tree/master/pong) by @lawrie. Thanks to @lawrie :)
+<img src="/assets/img/Introduction-to-FPGAs/Pong.gif" alt="atom_editor" width="400" height="250"/>
+
+The original files are hosted [here](https://github.com/lawrie/tinyfpga_examples/tree/master/pong) by @lawrie. Thanks @lawrie :)
 
 ## Credits 
-Thanks to Clifford Wolf for decrypting the bitstream format, Obijuan and others for the open source tools like apio ide, yosys, verilator. You people are the MVPs :)
+Thanks to Clifford Wolf for decrypting the bitstream format, Obijuan and others for the open source tools like apio ide, yosys, verilator. 
+
+1) [http://obijuan.github.io/intro-fpga.html](http://obijuan.github.io/intro-fpga.html)
+
+
+2) [https://tinyfpga.com/bx/guide.html](https://tinyfpga.com/bx/guide.html)
+
+
+3) [https://www.ni.com/en-sg/innovations/white-papers/08/fpga-fundamentals.html](https://www.ni.com/en-sg/innovations/white-papers/08/fpga-fundamentals.html)
+
+
+4) [https://zipcpu.com/blog/2018/10/05/tinyfpga.html](https://zipcpu.com/blog/2018/10/05/tinyfpga.html)
+
+
+5) [https://github.com/juanmard/screen-pong](https://github.com/juanmard/screen-pong)
+
+
+6) [https://github.com/Obijuan/MonsterLED/wiki](https://github.com/Obijuan/MonsterLED/wiki) 
+
+7) [https://github.com/lawrie/tinyfpga_examples/tree/master/pong](https://github.com/lawrie/tinyfpga_examples/tree/master/pong)
+
+
+8) [https://digitalsystemdesign.in/fpga-implementation-of-k-means-algorithm/](https://digitalsystemdesign.in/fpga-implementation-of-k-means-algorithm/)
+
+
+9) [https://www.allaboutcircuits.com/technical-articles/what-is-an-fpga-introduction-to-programmable-logic-fpga-vs-microcontroller/]([https://link](https://www.allaboutcircuits.com/technical-articles/what-is-an-fpga-introduction-to-programmable-logic-fpga-vs-microcontroller/))
 
 
 ## FAQ 
