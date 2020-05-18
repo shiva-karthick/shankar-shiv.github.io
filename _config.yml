@@ -27,9 +27,8 @@ projects:
     # - repo-name
 
 repositories:
-  - SPI_Serial_SRAM_23LC1024
-  - PLC_Energy_Saver
-  - Pygame_Projects
+  - talkingVoltmeter
+  - electronic-vault
 
 social_media:
   # behance: your_username
@@ -37,8 +36,8 @@ social_media:
   # facebook: your_username
   linkedin: shivashankar
   medium: "@shivashankaar"
-  # stackoverflow: your_user_id
+  stackoverflow: user:9633932
   # telegram: your_username
-  # twitter:
+  twitter: 9600_baud
   # youtube: your_username
   # vk: your_username

@@ -6,7 +6,6 @@ categories: FPGA
 mathjax: true
 ---
 
-Table of Contents :
 - [Understanding FPGAs](#understanding-fpgas)
   - [FPGA Applications](#fpga-applications)
 - [FPGAs vs Microcontrollers, what's the difference ?](#fpgas-vs-microcontrollers-whats-the-difference)
@@ -81,6 +80,8 @@ FPGA chip adoption is driven by their **flexibility**, **hardware-timed speed** 
 
 
 3) A IP designer needs to test her design and run simulation before fabricating in silicon.
+
+and many more ...
 
 ## TinyFPGA BX board (Hey it's tiny !)
 

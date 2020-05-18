@@ -6,7 +6,37 @@ categories: Software Defined Radio
 mathjax: true
 ---
 
-A week ago, I read a blog post at [Gnu radio receiver with SDRPLAY](https://hackaday.com/2015/11/12/your-first-gnu-radio-receiver-with-sdrplay/). It was really fascinating to watch how a cheap TV dongle can be repurposed as a software defined radio and can used as Digital Signal Processor. 
+- [So What is RTL-SDR dongle ?](#so-what-is-rtl-sdr-dongle)
+- [Technical specifications](#technical-specifications)
+  - [Rafael Micro R820T2](#rafael-micro-r820t2)
+  - [Realtek RTL2832U](#realtek-rtl2832u)
+- [How to get started with Hardware ?](#how-to-get-started-with-hardware)
+  - [Dipole Antenna Kit](#dipole-antenna-kit)
+  - [Dipole Orientation](#dipole-orientation)
+  - [Antenna Length](#antenna-length)
+- [How to get started with Software ?](#how-to-get-started-with-software)
+  - [Common settings](#common-settings)
+  - [Source](#source)
+  - [Configure Menu aka Hardware settings menu](#configure-menu-aka-hardware-settings-menu)
+  - [Frequency Input](#frequency-input)
+  - [Radio Tab](#radio-tab)
+  - [Bandwidth](#bandwidth)
+  - [Filter](#filter)
+  - [Squelch](#squelch)
+  - [Order](#order)
+  - [Correct IQ](#correct-iq)
+  - [FM Stereo](#fm-stereo)
+  - [FFT Display](#fft-display)
+  - [Window](#window)
+  - [Resolution](#resolution)
+  - [S-Attack / S-Decay](#s-attack--s-decay)
+  - [W-Attack / W-Decay](#w-attack--w-decay)
+- [A brief introduction to Gnuradio](#a-brief-introduction-to-gnuradio)
+- [Finding interesting Signals in Singapore](#finding-interesting-signals-in-singapore)
+  - [Arduino code for 4333 MHz Transmitter](#arduino-code-for-4333-mhz-transmitter)
+
+
+A week ago, I read a blog post of a [Gnu radio receiver with SDRPLAY](https://hackaday.com/2015/11/12/your-first-gnu-radio-receiver-with-sdrplay/). It was really fascinating to watch how a cheap TV dongle can be repurposed as a software defined radio and can used for Digital signal processing tasks. 
 
 But what is a software defined radio ? Let me start with what is not a SDR,
 
@@ -16,19 +46,21 @@ But what is a software defined radio ? Let me start with what is not a SDR,
 
 **A software defined radio is a RF communication system where the software is used to perform a significant amount of digital signal processing (DSP) tasks rather than a typical hardware based RF system**
 
-Radio components such as modulators, demodulators and tuners are traditionally implemented in analogue hardware components. The advent of modern computing and analogue to digital converters allows most of these traditionally hardware based components to be implemented in software instead. Hence, the term software defined radio. This enables easy signal processing and thus cheap wide band scanner radios to be produced. Do keep in mind the basic layout of a RF front end which are mixer, local oscillator, IF amplifiers and filters, demodulators and amplifiers. 
+Radio components such as modulators, demodulators and tuners are traditionally implemented in analogue hardware components. The advent of modern computing and analogue to digital converters allows most of these traditionally hardware based components to be implemented in software instead. 
 
-![Basic layout of SDR](/assets/img/Software_defined_radio_concept.png)
+Hence, the term software defined radio. This enables easy signal processing and thus cheap wide band scanner radios to be produced. Do keep in mind the basic layout of a RF front end which are mixer, local oscillator, IF amplifiers and filters, demodulators and amplifiers. 
 
-[Source](https://commons.wikimedia.org/w/index.php?curid=8831874)
+<img src="/assets/img/Getting-started-SDR/SDR_concept.png" alt="SDR_concept" width="650" height="500"/>
 
-![AM demodulation in hardware](/assets/img/Envelope_Detector.png)
+<p align="center"> Wikipedia </p> 
 
- <p align="center"> <b> AM demodulation in hardware </b> </p> 
+<img src="/assets/img/Getting-started-SDR/Envelope_Detector.png" alt="Envelope_Detector" width="550" height="400"/>
 
-# So What is RTL-SDR dongle ?
+ <p align="center"> AM demodulation in MultiSim simulation tool </p> 
 
-![RTL-SDR.jpg](/assets/img/RTL-SDR.jpg)
+## So What is RTL-SDR dongle ?
+
+<img src="/assets/img/Getting-started-SDR/RTL_SDR.jpg" alt="RTL_SDR" width="550" height="400"/>
 
 
 Contents :
@@ -44,7 +76,7 @@ I got an RTL-SDR dongle at [Aliexpress](https://www.aliexpress.com/store/4523039
 
 ## Technical specifications
 
-![technical features](/assets/img/technical_features.jpg)
+<img src="/assets/img/Getting-started-SDR/technical_features.jpg" alt="technical_features" width="550" height="400"/>
 
 - 500 KHz to 1.75 GHz frequency range
 - 8 bits ADC resolution
@@ -66,27 +98,19 @@ The R820T2 is a highly integrated tuner from Rafael Micro of Taiwan.
 ### Realtek RTL2832U
 The RTL2832U is a digital TV demodulator that supports a USB 2.0 interface and requires a front-end tuner. It is produced by Realtek of Taiwan.
 
-### How they Work together
+## How to get started with Hardware ?
 
-![RTLSDR design](/assets/img/RTLSDRdesign.png)
-
-# How to get started with Hardware ?
-
-## Dipole Antenna Kit
+### Dipole Antenna Kit
 
 The Dipole Antenna Kit allows for a simple v-dipole configuration for satellite reception.
 
-## Dipole Orientation
+### Dipole Orientation
 
-<img src="/assets/img/V_shaped_dipole.jpg" alt="V_shaped_dipole" height="550" width="600"/>
+<img src="/assets/img/Getting-started-SDR/V_shaped_dipole.jpg" alt="V_shaped_dipole" height="350" width="200"/>
 
 A dipole can be used in either vertical or horizontal polarization, just by orienting it either vertically or horizontally. Signals are normally transmitted with either horizontal, vertical or right hand/left hand circular polarization (RHCP/LHCP). This is essentially the 'orientation' of a signal, and an antenna with the same polarization should be used too for best performance.
 
-If you mismatch vertical and horizontal polarization or RHCP and LHCP you'll get an instant 20dB loss. If you mismatch vertical/RHCP, vertical/LHCP, horizontal/RHCP, horizontal/LHCP you'll only get a 3dB loss.
-
-**Tip** : For vertical polarization you will want to have the element connected to the center coax conductor pointing UP. You can confirm which element is connected to the center conductor by temporarily removing the black lid on the dipole base (it can be easily pried off with a nail or flat head screwdriver).
-
-## Antenna Length
+### Antenna Length
 
 I recommend this [dipole calculator](http://www.csgnetwork.com/antennaedcalc.html). The exact length does not matter too much, but try to get the lengths as close to what the calculator says as you can. With the dipole you want both elements to be the same length.
 
@@ -108,22 +132,12 @@ For example, if a signal of frequency of 100 Mhz were to be propagated, the mini
 
 The longer the antenna, the lower it's resonant frequency. The vice versa is the shorter the antenna, the higher it's resonant frequency . The closer you are to the resonant frequency, the signal reception is better. Remember that there is about 2cm of metal inside the antenna itself which needs to be added on. Below is a cheat sheet for various lengths and frequencies. Note that the length refers to the length of one side of the dipole only (e.g. the length that you need to extend each element out to).
 
-* Large Antenna, 5 Sections, 100cm + 2cm is resonant @ ~70 MHz
-* Large Antenna, 4 Sections, 80cm + 2cm is resonant @ ~87MHz
-* Large Antenna, 3 Sections, 60cm + 2cm is resonant @ ~115 MHz
-* Large Antenna, 2 Sections, 42cm + 2cm is resonant @ ~162 MHz
-* Large Antenna, 1 Section, 23cm + 2cm is resonant @ ~ 285 MHz
-* Small Antenna, 4 Sections, 14cm + 2cm is resonant @ ~445 MHz
-* Small Antenna, 3 Sections, 11cm + 2cm is resonant @ ~550 MHz
-* Small Antenna, 2 Sections, 8cm + 2cm is resonant @ ~720MHz
-* Small Antenna, 1 Section, 5cm + 2cm is resonant @ ~1030 MHz.
 
+For more indepth information, read at [https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/)
 
-For more indepth information, read [here](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/)
+## How to get started with Software ?
 
-# How to get started with Software ?
-
-Windows only(recommended by RTL-SDR blog)
+Windows only (recommended by [https://www.rtl-sdr.com/](https://www.rtl-sdr.com/))
 - SDR# (SDRSharp) 
 - HDSDR
 - SDR-RADIO V2
@@ -133,17 +147,15 @@ Linux
 - GQRX
 - CubicSDR
 
-There are 2 most important software to get started with digital signal processing and SDR. The first is SDR# and the second is GNU Radio.
-
 The steps to download and configure SDR# is extremely well written at [Quick Start Guide](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
 Another alternative is GNU Radio, if you use Windows like me download it [here](http://www.gcndevelopment.com/gnuradio/downloads.htm)
 
 Once the SDR# setup is done, open SDRSharp.exe.
 
-![SDR# Welcome Screen](/assets/img/sdrsharp_welcome_screen.png)
+<img src="/assets/img/Getting-started-SDR/sdrsharp_welcome_screen.png" alt="sdrsharp_welcome_screen" height="750" width="850"/>
 
-After opening SDR# for the first time, we suggest that you immediately remember to perform the following steps : 
+After opening SDR# for the first time, I suggest that you immediately remember to perform the following steps : 
 
 - Increase the RF gain from zero to a higher value in the configure menu.
   + Click the cog button (Configure Menu) located in the top left.
@@ -155,7 +167,7 @@ After opening SDR# for the first time, we suggest that you immediately remember 
   - The “Snap to grid” setting lies under the Radio toolbar
 - Set the 'Mode' to the correct setting for the signal that you are listing to.
 
-## Common settings
+### Common settings
 
 The Configure Menu holds all the settings for configuring hardware. In here are settings to control things like the RF gain and sample rate / bandwidth of the RTL-SDR. To optimize reception, you need to adjust settings in this window.
 
@@ -177,7 +189,7 @@ Use the mouse to set the desired frequency you wish to listen to here. You can e
 
 Here you can choose what type of demodulation mode the signal at your currently tuned frequency should use.
 
-![Radio Tab](Radio Tab.png)
+<img src="/assets/img/Getting-started-SDR/Radio_toolbar.png" alt="Radio_toolbar" height="400" width="250"/>
 
 | Mode    |        Acronym Expansion         |                                                                                                                                                                                          Explanation |
 | ------- | :------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -243,7 +255,7 @@ Changes the amount of smoothing and averaging done in the waterfall display.
 
 These are the common settings I use but YMMV. You can check all the settings [here](https://www.rtl-sdr.com/sdrsharp-users-guide/)
 
-# A brief introduction to Gnuradio
+## A brief introduction to Gnuradio
 
 "GNU Radio is a free & open-source software development toolkit that provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment." - [GnuRadio](https://www.gnuradio.org/about/)
 
@@ -251,9 +263,9 @@ The GNURadio Companion (GRC) is a great graphical tool to build digital signal p
 
 Likewise, The GRC provides all the DSP blocks for you many python blocks to create a custom DSP application even with little programming. The drag and drop approach could ease many engineers from prototyping to production. Did I mention it's all written in python , so hack your way through it.
 
-Here is a screenshpt of a starter GRC project :
+Here is a screenshot of a starter GRC project :
 
-![starter GRC project](starter GRC project.png)
+<img src="/assets/img/Getting-started-SDR/starter_grc.png" alt="starter_grc" height="800" width="650"/>
 
 A few pointers,
 
@@ -265,7 +277,7 @@ A few pointers,
 * No event signalling between blocks (Used by other block to change behaviour)
 * Free and Open Source, its GNU afterall!
 
-# Finding interesting Signals in Singapore
+## Finding interesting Signals in Singapore
 
 Singapore is a small red dot in the asia pacific region,  I've always assumed that there's not much amateur radio action here, nor are the airways particularly friendly for trying to pull down low-power signals from a-far. 
 
@@ -277,16 +289,17 @@ The [Signal Identification Guide](https://www.sigidwiki.com/wiki/Signal_Identifi
 
 Here are some quick samples,
 
-![FM Radio 96.8](/assets/img/FM_Radio.png)
+<img src="/assets/img/Getting-started-SDR/FM_Radio.png" alt="FM_Radio" height="950" width="800"/>
 
 I am listening to 96.8 Mhz FM radio. 
 
-If you have 433MHz RF Tx-Rx Modules lying around, you can use the Transmitter module to output a signal, and you can capture it in you SDR ! I used RadioHead library to accomplish this. 
+If you have 433MHz RF Tx-Rx Modules lying around, you can use the Transmitter module to output a signal, and you can capture it in you SDR ! I used [RadioHead](https://github.com/PaulStoffregen/RadioHead) library to accomplish this. 
 
-![Tx and Rx](/assets/img/Transmitter_and_Receiver_433_MHz.jpg)
+<img src="/assets/img/Getting-started-SDR/Transmitter_and_Receiver_433_MHz.jpg" alt="Transmitter_and_Receiver_433_MHz" height="650" width="500"/>
 
+<img src="/assets/img/Getting-started-SDR/433MHz_RF_Wireless_Transmitter_Module.png" alt="433MHz-RF-Wireless-Transmitter-" height="650" width="500"/>
 
-![Tx wiring diagram](/assets/img/433MHz-RF-Wireless-Transmitter-Module.png)
+<img src="/assets/img/Getting-started-SDR/433_Mhz_SDR_SHARP.png" alt="433_Mhz_SDR_SHARP.png" height="650" width="500"/>
 
 
 ### Arduino code for 4333 MHz Transmitter
@@ -314,12 +327,5 @@ void loop()
     delay(1000);
 }
 ```
-We can see the results both in SDR# and in GNURadio too !
-
-![433 Mhz SDR#](/assets/img/433_Mhz_SDR_SHARP.png)
-
-![433 Mhz GNURadio GRC](/assets/img/433Mhz_GNURadio_GRC.png)
 
 
-
-![433 Mhz GNURadio output](/assets/img/GRC_output.png )
