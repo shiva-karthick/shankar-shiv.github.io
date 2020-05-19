@@ -29,6 +29,7 @@ projects:
 repositories:
   - talkingVoltmeter
   - electronic-vault
+  - verilog-libraries
 
 social_media:
   # behance: your_username

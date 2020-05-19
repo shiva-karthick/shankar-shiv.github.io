@@ -6,6 +6,8 @@ categories: FPGA
 mathjax: true
 ---
 
+*12 min read*
+
 - [Understanding FPGAs](#understanding-fpgas)
   - [FPGA Applications](#fpga-applications)
 - [FPGAs vs Microcontrollers, what's the difference ?](#fpgas-vs-microcontrollers-whats-the-difference)
@@ -16,7 +18,7 @@ mathjax: true
 - [Blink Example](#blink-example)
 - [VGA Example](#vga-example)
     - [Circuit diagram :](#circuit-diagram)
-- [Credits](#credits)
+- [References](#references)
 - [FAQ](#faq)
 
 > Have you ever wondered that you can create your own microprocessor ? Have you dreamed of creating digital circuits in software ? All this is possible thanks to the FPGAs. With them you can fully immerse yourself in the design of digital electronics.
@@ -65,7 +67,7 @@ It all comes down to *hardware vs software*.
 
 A microprocessor executes its tasks in a sequential fashion, each instruction being processed before the next one is started. This instruction cycle is composed of three main stages: the fetch stage, the decode stage, and the execute stage. This inherently limits how a designer can implement her solutions. It is impossible to execute instructions in parallel like a FPGA. Moreover a microprocessor has overhead delays when executing on top of an OS, drivers, and application software.
 
-FPGAs are truly parallel ,so different processing operations do not have to compete for the same CPU and memory resources. The task executing does not depend on other logic blocks and can function by itself. This results in the FPGA not compromising its performance.
+FPGAs are truly parallel, so different processing operations do not have to compete for the same CPU and memory resources. The task executing does not depend on other logic blocks and can function by itself. This results in the FPGA not compromising its performance.
 
 <img src="/assets/img/Introduction-to-FPGAs/Decision_Making_in_FPGA_Hardware.jpg" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
 
@@ -93,11 +95,11 @@ The TinyFPGA BX consists of :
 + ICE40LP8K FPGA
   + 7,680 four-input look-up-tables
   + 128 KBit block RAM
-  + Phase Locked Loop
+  + Phase-Locked Loop
   + 41 user IO pins
 + An [ultra low power 16MHz clock MEMs oscillator](http://ww1.microchip.com/downloads/en/DeviceDoc/20005625B.pdf),
 + Onboard 3.3 V (300 mA) and 1.2 V (150 mA) LDO regulators,
-+ A 8 MBit of SPI Flash QSPI mode,
++ An 8 MBit of SPI Flash QSPI mode,
 + A power LED and an onboard LED,
 + A reset button to reload the FPGA from flash,
 + Height: 1.4 inches, width: 0.7 inches,
@@ -430,7 +432,7 @@ endmodule
 
 The original files are hosted [here](https://github.com/lawrie/tinyfpga_examples/tree/master/pong) by @lawrie. Thanks @lawrie :)
 
-## Credits 
+## References 
 Thanks to Clifford Wolf for decrypting the bitstream format, Obijuan and others for the open source tools like apio ide, yosys, verilator. 
 
 1) [http://obijuan.github.io/intro-fpga.html](http://obijuan.github.io/intro-fpga.html)
@@ -458,6 +460,7 @@ Thanks to Clifford Wolf for decrypting the bitstream format, Obijuan and others 
 
 9) [https://www.allaboutcircuits.com/technical-articles/what-is-an-fpga-introduction-to-programmable-logic-fpga-vs-microcontroller/]([https://link](https://www.allaboutcircuits.com/technical-articles/what-is-an-fpga-introduction-to-programmable-logic-fpga-vs-microcontroller/))
 
+I hope you learned a thing or two in this article, if you liked it, please share with your friends.
 
 ## FAQ 
 
