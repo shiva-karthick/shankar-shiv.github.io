@@ -37,8 +37,20 @@ social_media:
   # facebook: your_username
   linkedin: shivashankar
   medium: "@shivashankaar"
-  stackoverflow: user:9633932
+  stackoverflow: 9633932
   # telegram: your_username
   twitter: 9600_baud
-  # youtube: your_username
+  youtube: Shiva Shankar
   # vk: your_username
+
+topics:
+  - name: Electronics
+    web_url: https://aws.amazon.com/iot/?hp=tile&tile=solutions
+    image_url: /assets/img/Introduction-to-FPGAs/tinyfpga-front-back.jpg
+
+  - name: Machine learning
+    image_url: /assets/img/k_means.png
+
+  - name: Cloud computing
+    web_url: https://aws.amazon.com/iot/?hp=tile&tile=solutions
+    image_url: /assets/img/aws.jpg
