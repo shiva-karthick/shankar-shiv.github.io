@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting started with RTL Software Defined Radios"
 date:   2020-02-02 16:12:55 +0800
-categories: Software Defined Radio
+categories: electronics
 mathjax: true
 ---
 

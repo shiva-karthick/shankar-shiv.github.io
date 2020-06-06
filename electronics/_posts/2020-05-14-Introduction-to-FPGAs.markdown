@@ -2,7 +2,7 @@
 layout: post
 title:  "Introduction to FPGAs using TinyFPGA BX"
 date:   2020-05-14 16:30:55 +0800
-categories: FPGA
+categories: electronics
 mathjax: true
 ---
 

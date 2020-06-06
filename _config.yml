@@ -30,6 +30,7 @@ repositories:
   - talkingVoltmeter
   - electronic-vault
   - verilog-libraries
+  - CensorTube
 
 social_media:
   # behance: your_username

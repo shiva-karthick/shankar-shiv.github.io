@@ -2,7 +2,7 @@
 layout: post
 title:  "Rewriting cat command from scratch"
 date:   2020-03-09 00:20:00 +0800
-categories: Linux commands
+categories: linux
 mathjax: true
 ---
 
