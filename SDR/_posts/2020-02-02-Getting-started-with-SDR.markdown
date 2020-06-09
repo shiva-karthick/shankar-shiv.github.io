@@ -2,19 +2,19 @@
 layout: post
 title:  "Getting started with RTL Software Defined Radios"
 date:   2020-02-02 16:12:55 +0800
-categories: electronics
+categories: radio
 mathjax: true
 ---
 
-- [So What is RTL-SDR dongle ?](#so-what-is-rtl-sdr-dongle)
+- [So What is RTL-SDR dongle ?](#so-what-is-rtl-sdr-dongle-)
 - [Technical specifications](#technical-specifications)
   - [Rafael Micro R820T2](#rafael-micro-r820t2)
   - [Realtek RTL2832U](#realtek-rtl2832u)
-- [How to get started with Hardware ?](#how-to-get-started-with-hardware)
+- [How to get started with Hardware ?](#how-to-get-started-with-hardware-)
   - [Dipole Antenna Kit](#dipole-antenna-kit)
   - [Dipole Orientation](#dipole-orientation)
   - [Antenna Length](#antenna-length)
-- [How to get started with Software ?](#how-to-get-started-with-software)
+- [How to get started with Software ?](#how-to-get-started-with-software-)
   - [Common settings](#common-settings)
   - [Source](#source)
   - [Configure Menu aka Hardware settings menu](#configure-menu-aka-hardware-settings-menu)
