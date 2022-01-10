@@ -1,57 +1,52 @@
-layout: stacked
-style: light
+name: Rani Dilipkumar Shiva Shankar
+description: If I have seen further than others, it is by standing upon the shoulders of giants - Isaac Newton
+meta_description: "Hello there, I am shankar studying Electrical Engineering in National University of Singapore"
+meta_tags: "shankar, sp, singapore polytechnic, electrical, electrical engineering, nus, national university of singapore, eee"
+
+aboutPage: true
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+    input: GFM
 
 plugins:
-  - jekyll-octicons
-  - jekyll-github-metadata
-  - jemoji
+    - jekyll-sitemap
+    - jekyll-paginate
+    - jekyll-redirect-from
 
-permalink: /:year/:month/:day/:title/
+paginate: 10
+baseurl:
+domain_name: "https://shankar-shiv.github.io"
+
+#social-icons
+twitter:
+instagram:
+linkedin:
+github:
+email:
+
+# Details for the RSS feed generator
+url: "https://shankar-shiv.github.io"
+author: "Rani Dilipkumar Shiva Shankar"
+authorTwitter:
+
+permalink: /:year/:title/
 
 defaults:
-  scope:
-    path: "" # an empty string here means all files in the project
-    type: "posts"
-  values:
-    layout: "post"
-
-projects:
-  sort_by: pushed
-  # sort_by options:
-  #   - pushed
-  #   - stars
-  limit: 9
-  exclude:
-    forks: true
-    projects:
-    # - repo-name
-
-repositories:
-  - talkingVoltmeter
-  - electronic-vault
-  - verilog-libraries
-  - CensorTube
-
-social_media:
-  # behance: your_username
-  # dribbble: your_username
-  # facebook: your_username
-  linkedin: shivashankar
-  medium: "@shivashankaar"
-  stackoverflow: 9633932
-  # telegram: your_username
-  twitter: 9600_baud
-  youtube: Shiva Shankar
-  # vk: your_username
-
-topics:
-  - name: Electronics
-    web_url: https://aws.amazon.com/iot/?hp=tile&tile=solutions
-    image_url: /assets/img/Introduction-to-FPGAs/tinyfpga-front-back.jpg
-
-  - name: Machine learning
-    image_url: /assets/img/k_means.png
-
-  - name: Cloud computing
-    web_url: https://aws.amazon.com/iot/?hp=tile&tile=solutions
-    image_url: /assets/img/aws.jpg
+    - scope:
+          path: "" # empty string for all files
+          type: pages
+      values:
+          layout: default
+    - scope:
+          path: "" # empty string for all files
+          type: posts
+      values:
+          layout: post
+    - scope:
+          path: ""
+          type: drafts
+      values:
+          layout: post

@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-gem 'github-pages', group: :jekyll_plugins
-gem "jekyll-github-metadata"
-gem "jekyll-octicons"
-gem "jemoji"
+source "http://rubygems.org"
+
+gem 'jekyll-sitemap'
+gem 'jekyll-paginate'
+gem 'jekyll-redirect-from'

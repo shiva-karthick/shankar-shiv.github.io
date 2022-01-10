@@ -1,33 +1,68 @@
-{% include header.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Rani Dilipkumar Shiva Shankar">
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.meta_description }}{% endif %}">
+  <meta name="keywords" content="{% if page.tags %}{{ page.tags }}{% else %}{{ site.meta_tags }}{% endif %}">
+  <!-- Social: Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{ site.twitter }}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.meta_description }}{% endif %}">
+  <!-- Social: Facebook / Open Graph -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}" />
+  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.meta_description }}{% endif %}" />
+  {% if page.title %}
+  <title>{{ site.name }} - {{ page.title }}</title>
+  {% else %}
+  <title>Rani Dilipkumar Shiva Shankar</title>
+  {% endif %}
+  <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favicon.ico">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="{{ site.baseurl }}/feed.xml">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/highlight.css">
 
-{% if site.layout == 'stacked' %}
-  <div class="container-lg py-6 p-responsive text-center">
-    {% include masthead.html metadata=false %}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144119335-1"></script> -->
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <div class="container-md f4 text-left border rounded-2 bg-white p-3 p-sm-5 mt-6">
-      <p class="f5"><a href="/" class="d-flex flex-items-center">{% octicon chevron-left height:16 class:"mr-2 v-align-middle" fill:#0366d6 aria-label:Home %}Home</a></p>
-      <h1 class="f00-light lh-condensed mb-5">{{ page.title }}</h1>
-      {{ content }}
-    </div>
-  </div>
-{% else %}
-  <div class="d-md-flex height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">
-    <div class="flex-self-stretch {% if site.style == 'dark' %}bg-gray-dark{% else %}border-md-right border-gray-light bg-white{% endif %} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
-      {% include masthead.html metadata=true %}
-    </div>
+    gtag('config', 'UA-144119335-1');
+  </script> -->
+</head>
+<body>
 
-    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
-      <div class="mx-auto" style="max-width: 900px;">
-        <div class="f4 {% if site.style == 'dark' %}text-white{% endif %} mb-6">
-          <div class="f4 {% if site.style == 'dark' %}text-white{% endif %}">
-            <p class="f5"><a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{% octicon chevron-left height:16 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home %}Home</a></p>
-            <h1 class="f00-light lh-condensed mb-5">{{ page.title }}</h1>
-            {{ content }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-{% endif %}
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-{% include footer.html %}
+  {% include navigation.html %}
+
+  {% if page.profile %}
+      {% include profile.html %}
+  {% endif %}
+
+  <section id="wrapper" class="{% if page.profile %}home{% endif %}">
+    {{ content }}
+  </section>
+
+  {% include icons.html %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/highlight.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
