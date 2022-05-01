@@ -1,0 +1,4 @@
+Vulnerability testing
+https://medium.com/csg-govtech/when-you-have-no-money-and-want-to-find-bugs-in-routers-cd9786856bdc
+
+

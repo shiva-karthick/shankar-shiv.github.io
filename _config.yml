@@ -1,6 +1,6 @@
-name: Rani Dilipkumar Shiva Shankar
-description: If I have seen further than others, it is by standing upon the shoulders of giants - Isaac Newton
-meta_description: "Hello there, I am shankar studying Electrical Engineering in National University of Singapore"
+name: Shiva Shankar
+description: “If a man knows not which port he sails, no wind is favorable.” – Seneca
+meta_description: "Hello, my name is Shankar, and I am a National University of Singapore undergraduate student studying Electrical Engineering."
 meta_tags: "shankar, sp, singapore polytechnic, electrical, electrical engineering, nus, national university of singapore, eee"
 
 aboutPage: true
@@ -29,7 +29,7 @@ email:
 
 # Details for the RSS feed generator
 url: "https://shankar-shiv.github.io"
-author: "Rani Dilipkumar Shiva Shankar"
+author: "Shiva Shankar"
 authorTwitter:
 
 permalink: /:year/:title/

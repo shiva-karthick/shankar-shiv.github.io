@@ -53,7 +53,7 @@ Disadvantages of SPI
 
 The standard SPI connection involves a primary microntroller connected to a secondary microcontroller using the Serial CLocK (SCK), Master Out Slave In (MOSI), Master In Slave Out (MISO), and Chip Select (CS) lines.
 
-<img src="/assets/img/Introduction-SPI-communication/SPI-configuration.png" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
+<img src="/assets/images/Introduction-SPI-communication/SPI-configuration.png" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
 
 #### SCLK - Clock
 The primary microcontroller initiates data transfer using the clock signal. The clock line synchronizes the two communicating devices. For example, this way both can agree that they’ll read and write data on the positive voltage transition. Both primary and secondary devices use the clock signal to synchronize their voltage signals on the MOSI and MISO data lines.
@@ -68,11 +68,11 @@ The CS is active low, which means in order to talk to the secondary device, the 
 
 ## Data transmission
 
-<img src="/assets/img/Introduction-SPI-communication/SPI_8-bit_circular_transfer.png" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
+<img src="/assets/images/Introduction-SPI-communication/SPI_8-bit_circular_transfer.png" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
 
 The primary device configures the clock, using a frequency supported by the secondary device and selects the secondary device by enabling the CS signal(LOW) in order to begin a transmission. During each SPI clock cycle, a full-duplex data transmission occurs. The data is simultaneously transmitted (shifted out serially onto the MOSI bus) and received (the data on the bus (MISO) is sampled or read in).
 
-<img src="/assets/img/Introduction-SPI-communication/SPI_shift_register.png" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
+<img src="/assets/images/Introduction-SPI-communication/SPI_shift_register.png" alt="Decision_Making_in_FPGA_Hardware" width="500" height="300"/>
 
 Transmissions normally involve two shift registers; one in the primary device and one in the secondary device; they are connected in a **virtual ring topology**. Data is shifted out either with a most significant bit (MSB) or least significant bit(LSB). 
 
@@ -82,7 +82,7 @@ The SPI provides the user with flexibility to select the rising or falling edge 
 
 ## Clock POLarity(CPOL) and Clock PHAse (CPHA)
 
-<img src="/assets/img/Introduction-SPI-communication/timing-diagram.png" alt="timing-diagram" width="500" height="250"/>
+<img src="/assets/images/Introduction-SPI-communication/timing-diagram.png" alt="timing-diagram" width="500" height="250"/>
 
 The primary device should also configure the clock polarity and phase with respect to the data. 
 
@@ -103,13 +103,13 @@ The primary device should also configure the clock polarity and phase with respe
 
 For example, SPI MODE 0 is; a timing diagram showing clock polarity and phase. Orange lines denote clock leading edges, and blue lines, trailing edges.
 
-<img src="/assets/img/Introduction-SPI-communication/Mode0.png" alt="Mode0" width="500" height="300"/>
+<img src="/assets/images/Introduction-SPI-communication/Mode0.png" alt="Mode0" width="500" height="300"/>
 
 ## Independent SPI Configuration
 
-<img src="/assets/img/Introduction-SPI-communication/independent-spi.png" alt="independent SPI" width="600" height="400"/>
+<img src="/assets/images/Introduction-SPI-communication/independent-spi.png" alt="independent SPI" width="600" height="400"/>
 
-<img src="/assets/img/Introduction-SPI-communication/MISO-tristate.png" alt="tristate" width="500" height="300"/>
+<img src="/assets/images/Introduction-SPI-communication/MISO-tristate.png" alt="tristate" width="500" height="300"/>
 
 In the independent SPI configuration, an independent chip select line exists for each secondary device. The primary device asserts only one chip select at a time. 
 
@@ -121,7 +121,7 @@ In the independent SPI configuration, an independent chip select line exists for
 
 ## Dasiy Chain SPI Configuration
 
-<img src="/assets/img/Introduction-SPI-communication/SPI_three_slaves_daisy_chained.png" alt="dasiy chain" width="500" height="300"/>
+<img src="/assets/images/Introduction-SPI-communication/SPI_three_slaves_daisy_chained.png" alt="dasiy chain" width="500" height="300"/>
 
 The CS line is tied together for all the secondary devices and data propagates from one chip to the next. All chips receive the same SCLK. The MISO of the first chip is connected to the MOSI of the second chip and so on ... 
 
@@ -132,7 +132,7 @@ Other applications that can potentially interoperate with SPI that require a dai
 
 ## Application of 23LC1024 1Mbit SPI Serial SRAM
 
-<img src="/assets/img/Introduction-SPI-communication/wiring-diagram.png" alt="wiring diagram" width="700" height="700"/>
+<img src="/assets/images/Introduction-SPI-communication/wiring-diagram.png" alt="wiring diagram" width="700" height="700"/>
 
 | Arduino |  23LC1024  |
 | ------- | :--------: |

@@ -6,7 +6,8 @@ categories: iot
 mathjax: true
 ---
 
-In the past, I have wished to order a pizza in the press of a button. But now, it's very much possible. The AWS IoT Button seemed a great candidate for many IoT projects. 
+In the past, I have wished to order a pizza in the press of a button. But now, it's very much possible with the assistance of cloud services. The AWS IoT Button seemed a great candidate for many IoT projects. 
+
 There are numerous use cases such as :
 + Call or alert someone
 + Open your garage door
@@ -16,7 +17,7 @@ I decided to give it a try. In this guide, I would like to show how I made the A
 
 Let's get started!
 
-<img src="/assets/img/Iot-button/button.jpg" alt="button" style="width:450;height:500px;">
+<img src="/assets/images/Iot-button/button.jpg" alt="button" style="width:450;height:500px;">
 
 Things used in this project:
 + Amazon Web Services AWS IoT Button
@@ -29,9 +30,9 @@ Things used in this project:
 + Complete "Getting Started" section: <a href="https://aws.amazon.com/iot/button"> <span style="background-color: black; color : white">https://aws.amazon.com/iot/button</span> </a>
   
   1) In the Console services search bar -> Type "IoT Core" 
-    <img src="/assets/img/Iot-button/IoT_core.png" alt="Iot core" style="width:1000px;height:500px;">
+    <img src="/assets/images/Iot-button/IoT_core.png" alt="Iot core" style="width:1000px;height:500px;">
   2) In the side bar click on "Manage" and then "Create a single thing" 
-    <img src="/assets/img/Iot-button/things.png" alt="things" style="width:1000px;height:500px;">
+    <img src="/assets/images/Iot-button/things.png" alt="things" style="width:1000px;height:500px;">
   3) Leave blank for "Thing Type", "Thing Group".
   
   4) Just follow the steps as directed  :)
@@ -49,12 +50,12 @@ So far so good! Your button is configured and is able to send a message to AWS. 
 
 You should be able to see this in your email when you press your IoT button. Try it !
 
-<img src="/assets/img/Iot-button/email.png" alt="email" style="width:1000px;height:500px;">
+<img src="/assets/images/Iot-button/email.png" alt="email" style="width:1000px;height:500px;">
 
 ### Debugging
 Go to `Monitoring` tab -> click `View logs in CloudWatch`
 
-<img src="/assets/img/Iot-button/double_click.png" alt="double_click.png" style="width:1000px;height:500px;">
+<img src="/assets/images/Iot-button/double_click.png" alt="double_click.png" style="width:1000px;height:500px;">
 
 ## Setting up IFTTT
 
@@ -101,10 +102,7 @@ exports.handler = function(event, context) {
 };
 ```
 I have configured the `that` portion of IFTTT to send me a message to my mobile device.
-<img src="/assets/img/Iot-button/phone_message.jpg" alt="phone_message" style="width:450px;height:800px;">
-
-### Explaining the code
-
+<img src="/assets/images/Iot-button/phone_message.jpg" alt="phone_message" style="width:450px;height:800px;">
 
 
 That's it folks ! It is very easy to set up the AWS IoT button and IFTTT. You will be able to connect to any service within a click of a button. Enjoy creating interesting recipes for your button, the sky is your limit!
