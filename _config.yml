@@ -15,7 +15,6 @@ plugins:
     - jekyll-sitemap
     - jekyll-paginate
     - jekyll-redirect-from
-    - jekyll-feed
     - jekyll-seo-tag
 
 paginate: 10
@@ -28,6 +27,11 @@ instagram:
 linkedin:
 github:
 email:
+
+share-links-active:
+    twitter: true
+    facebook: true
+    linkedin: true
 
 # Details for the RSS feed generator
 url: "https://shankar-shiv.github.io"
