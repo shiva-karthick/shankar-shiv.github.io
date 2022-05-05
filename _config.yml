@@ -36,9 +36,6 @@ share-links-active:
 # Details for the RSS feed generator
 url: "https://shankar-shiv.github.io"
 author: "Shiva Shankar"
-feed_items: 10
-feed_update_period: daily
-feed_update_frequency: 1
 authorTwitter:
 
 permalink: /:year/:title/
