@@ -10,7 +10,7 @@ profile: true
 		<img src="{{ site.baseurl }}/assets/images/awscth.jpeg" alt="AWS CTH" />
 	</div>
 	<div class="info">
-		<h1>Double Win at Amazon Web Services Public Sector Summit 2018</h1>
+		<h1>2nd prize and Viewer's choice award at Amazon Web Services Public Sector Summit 2018</h1>
 		<p class="desc">
 			My team's solution was focused on transcribing doctor’s medical jargon, nurse’s medical instruction/direction, categorizing the data into bite-sized information where patients access through a dynamically generated QR code, and to navigate the respective clinics in KK Women's and Children's Hospital using Augmented Reality.
 		</p>
