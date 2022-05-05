@@ -30,7 +30,9 @@ where $$a_{n}$$, $$b_{n}$$, and $$c_{n}$$ is the number of ants in compartment a
 0\\
 \end{pmatrix}$$
 
-<img src="/assets/images/Solving_Markov_Chains/example.jpg" alt="button" style="width:320px;height:400px;">
+
+{% assign imgs = "../../assets/images/Solving_Markov_Chains/example.jpg" | split: ',' %}
+{% include image.html images=imgs maxwidth="100%" caption="Markov chain visualization" %}<br class="img">
 
 The first step would be to form a system of linear equations,
 
@@ -134,7 +136,8 @@ If $|\lambda| < 1$, then $\lambda^{k} \to 0 \ as \ k \to \infty$
 As the number of observations increases, the fixed vector can be determined by the method of **Diagonalization**.
 The **eigenvalues** and **eigenvectors** explain the system's long-term behavior.
 
-<img src="/assets/images/Solving_Markov_Chains/eigen_is_everything.jpg" alt="button" style="width:320px;height:240px;">
+{% assign imgs = "../../assets/images/Solving_Markov_Chains/eigen_is_everything.jpg" | split: ',' %}
+{% include image.html images=imgs maxwidth="100%" caption="Eigenvalues and Eigenvectors" %}<br class="img">
 
 We shall now diagonalize **A**
 
@@ -299,12 +302,12 @@ A^{k} = P D^{k} P^{-1} * \ initial\ state\ vector = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-```MATLAB
+{% highlight matlab %}
 % Here is the code using MATLAB,
 [P D] = eig(A);
 D = [1 0 0; 0 0 0; 0 0 0]
 P * D * inv(P) * [100; 0; 0]
-```
+{% endhighlight matlab %}
 
 Thus, in the long run, the population of ants will be equally divided into the 3 compartments a,b and c.
 
