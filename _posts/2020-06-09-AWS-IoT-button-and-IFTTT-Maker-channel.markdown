@@ -17,7 +17,7 @@ I decided to give it a try. In this guide, I would like to show how I made the A
 
 Let's get started!
 
-<img src="/assets/images/Iot-button/button.jpg" alt="button" style="width:450;height:500px;">
+<img src="/assets/images/Iot-button/button.jpg" alt="button" style="width:240;height:500px;">
 
 Things used in this project:
 + Amazon Web Services AWS IoT Button
