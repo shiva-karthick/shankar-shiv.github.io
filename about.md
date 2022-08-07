@@ -20,7 +20,7 @@ As a consequence, I started this personal blog. There are two primary reasons fo
 # What if You spot an error?
 Please use the contact page to let me know if you spot any errors so I can correct them and update the content. I appreciate your help.
 
-Hit me up on [twitter](https://twitter.com/eigenShankar) or [LinkedIn](https://www.linkedin.com/in/shiva-shankar-75a497152/) send me an [email](mailto:shankaarshiva@gmail.com) if you wish to contact me.
+Hit me up on [twitter](https://twitter.com/eigenShankar) or [LinkedIn](https://www.linkedin.com/in/shiva-shankar-75a497152/) or send me an [email](mailto:shankaarshiva@gmail.com) if you wish to contact me.
 
 Do also follow my buddys' [blog](https://modelconverge.xyz/). 
 
