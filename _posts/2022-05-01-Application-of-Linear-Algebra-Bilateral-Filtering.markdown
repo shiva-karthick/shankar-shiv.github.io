@@ -114,6 +114,14 @@ def gaussian(path, sigma):
 
 I hope you've got a better knowledge of bilateral filtering. Keep an eye out for further postings about linear algebra in the future! Also, don't forget to share my posts on social media and sign up for email updates!
 
+The above work was completed by myself to fulfill a Linear Algebra Project(Automatic Number Plate Recognition), in colloboration with my awesome team mates 
+
+- Darius Koh
+- Faruq Khan
+- Hansel Li
+- Jiankun
+- Vong
+
 A huge thanks to Prof Jonathon Teo, Mr.Christian Go and to my friends!
 
 References:
